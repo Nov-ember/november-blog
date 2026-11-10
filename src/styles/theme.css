@@ -7,28 +7,29 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --font-app: var(--font-google-sans-code);
+  --font-app: var(--font-maple-mono);
 }
 
-/* Light theme values */
+/* Nord light: Snow Storm background, Polar Night text. */
 :root,
 [data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
+  --background: #eceff4;
+  --foreground: #2e3440;
+  /* Darkened nord10 for readable links on the light background. */
+  --accent: #46658a;
   --accent-foreground: #ffffff;
-  --muted: #e6e6e6;
-  --muted-foreground: #6b7280;
-  --border: #ece9e9;
+  --muted: #e5e9f0;
+  --muted-foreground: #4c566a;
+  --border: #d8dee9;
 }
 
-/* Dark theme values */
+/* Nord dark: Polar Night background, Snow Storm text, Frost accent. */
 [data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --accent-foreground: #ffffff;
-  --muted: #343f60;
-  --muted-foreground: #afb9ca;
-  --border: #ab4b08;
+  --background: #2e3440;
+  --foreground: #eceff4;
+  --accent: #88c0d0;
+  --accent-foreground: #2e3440;
+  --muted: #3b4252;
+  --muted-foreground: #d8dee9;
+  --border: #434c5e;
 }

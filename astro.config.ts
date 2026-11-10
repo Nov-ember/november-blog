@@ -68,13 +68,34 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: "Google Sans Code",
-      cssVariable: "--font-google-sans-code",
-      provider: fontProviders.google(),
+      name: "Maple Mono NF CN",
+      cssVariable: "--font-maple-mono",
+      provider: fontProviders.local(),
       fallbacks: ["monospace"],
-      weights: [300, 400, 500, 600, 700],
-      styles: ["normal", "italic"],
-      formats: ["woff", "ttf"],
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/maple/MapleMono-NF-CN-Regular.woff2"],
+            weight: 400,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/maple/MapleMono-NF-CN-Medium.woff2"],
+            weight: 500,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/maple/MapleMono-NF-CN-SemiBold.woff2"],
+            weight: 600,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/maple/MapleMono-NF-CN-Bold.woff2"],
+            weight: 700,
+            style: "normal",
+          },
+        ],
+      },
     },
   ],
   env: {

@@ -10,9 +10,6 @@ export interface UIStrings {
   post: {
     publishedAt: string;
     updatedAt: string;
-    sharePostIntro: string;
-    sharePostOn: string;
-    sharePostViaEmail: string;
     tagLabel: string;
     backToTop: string;
     /** Optional until v8, so older locale files still type-check. */
@@ -28,7 +25,6 @@ export interface UIStrings {
     page: string;
   };
   home: {
-    socialLinks: string;
     featured: string;
     recentPosts: string;
     allPosts: string;

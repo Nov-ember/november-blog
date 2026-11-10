@@ -9,8 +9,6 @@ interface SiteConfig {
   author: string;
   /** Author profile URL (used in structured data) */
   profile?: string;
-  /** Fallback OG image filename in /public, e.g. "og.jpg" */
-  ogImage?: string;
   /** HTML lang attribute, defaults to "en" */
   lang?: string;
   /** IANA timezone for post dates, e.g. "Asia/Bangkok" */
@@ -37,12 +35,6 @@ interface PostsConfig {
 interface FeaturesConfig {
   /** Enable light/dark mode toggle. Defaults to true. */
   lightAndDarkMode?: boolean;
-  /**
-   * Generate dynamic OG images per post and provide `/og.png` when the static
-   * `public/{site.ogImage}` file is absent. When false, that file is required
-   * for the default layout OG image (build fails if missing).
-   */
-  dynamicOgImage?: boolean;
   /** Show the /archives page and link it in nav. Defaults to true. */
   showArchives?: boolean;
   /** Show back button on post detail pages. Defaults to true. */
@@ -83,30 +75,12 @@ interface SocialLink {
   linkTitle?: string;
 }
 
-interface ShareLink {
-  /**
-   * Must match an SVG filename in src/assets/icons/socials/.
-   * e.g. "facebook" → src/assets/icons/socials/facebook.svg
-   */
-  name: string;
-  /** Base share URL. The post URL will be appended as a query param. */
-  url: string;
-  /**
-   * Accessible label for the icon link (aria-label, title attribute).
-   * Auto-generated if omitted: "Share this post on Facebook", "Share this post via WhatsApp", etc.
-   * Override when the default wording doesn't fit.
-   */
-  linkTitle?: string;
-}
-
 interface AstroPaperConfig {
   site: SiteConfig;
   posts?: PostsConfig;
   features?: FeaturesConfig;
   /** Social profile links shown in header/footer */
   socials?: SocialLink[];
-  /** Share links shown on post detail pages */
-  shareLinks?: ShareLink[];
 }
 
 type ResolvedSiteConfig = Required<
@@ -119,7 +93,6 @@ type ResolvedSiteConfig = Required<
     | "lang"
     | "timezone"
     | "dir"
-    | "ogImage"
   >
 > &
   Pick<SiteConfig, "profile" | "googleVerification">;
@@ -129,7 +102,6 @@ export interface ResolvedAstroPaperConfig {
   posts: Required<PostsConfig>;
   features: Required<FeaturesConfig>;
   socials: SocialLink[];
-  shareLinks: ShareLink[];
 }
 
 /**
