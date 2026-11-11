@@ -2,7 +2,7 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://astro-paper.pages.dev/",
+    url: "https://nov-ember.github.io",
     title: "November Notes",
     description: "十一月手记",
     author: "Nov",
