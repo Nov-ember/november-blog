@@ -1,17 +1,15 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import Main from "@/components/Main.astro";
 import Footer from "@/components/Footer.astro";
 import { friends } from "@/data/links";
-import { getAssetPath } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
 const t = useTranslations(Astro.currentLocale ?? config.site.lang);
-const avatarSrc = (path: string) =>
-  /^https?:\/\//.test(path) ? path : getAssetPath(path);
 ---
 
 <Layout
@@ -36,12 +34,14 @@ const avatarSrc = (path: string) =>
                 >
                   {Array.from(friend.name.trim())[0]?.toLocaleUpperCase()}
                   {friend.avatar && (
-                    <img
+                    <Image
                       data-friend-avatar
-                      src={avatarSrc(friend.avatar)}
+                      src={friend.avatar}
                       alt=""
-                      width="48"
-                      height="48"
+                      width={48}
+                      height={48}
+                      densities={[1, 2, 3]}
+                      format="webp"
                       loading="lazy"
                       decoding="async"
                       class="absolute inset-0 size-full object-cover"

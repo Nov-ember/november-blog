@@ -17,7 +17,7 @@ Users cannot see this post because it is in draft.
 > [!NOTE]
 > 其实不然。
 
-![图片说明](../../assets/images/HelloWorld.jpg)
+![图片说明](../../assets/images/posts/HelloWorld.jpg)
 
 
 ## 正文由二级标题开始
