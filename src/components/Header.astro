@@ -6,6 +6,7 @@ import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconX from "@/assets/icons/IconX.svg";
+import PalettePicker from "./PalettePicker.astro";
 import LinkButton from "./LinkButton.astro";
 import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
@@ -90,16 +91,16 @@ const isActive = (path: string) => {
           </a>
         </li>
         {
-            features.showArchives && (
-                <li class="col-span-2">
-                  <a
-                      href={getRelativeLocaleUrl(locale, "archives")}
-                      class:list={{ "active-nav": isActive("/archives") }}
-                  >
-                    {t.nav.archives}
-                  </a>
-                </li>
-            )
+          features.showArchives && (
+            <li class="col-span-2">
+              <a
+                href={getRelativeLocaleUrl(locale, "archives")}
+                class:list={{ "active-nav": isActive("/archives") }}
+              >
+                {t.nav.archives}
+              </a>
+            </li>
+          )
         }
         <li class="col-span-2">
           <a
@@ -131,6 +132,9 @@ const isActive = (path: string) => {
             </li>
           )
         }
+        <li class="col-span-2 flex items-center justify-center sm:col-span-1">
+          <PalettePicker label={t.a11y.choosePalette} />
+        </li>
         {
           features.lightAndDarkMode && (
             <li class="col-span-1 flex items-center justify-center">

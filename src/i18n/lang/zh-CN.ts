@@ -51,6 +51,7 @@ export default {
     searchDesc: "Search any article ...",
   },
   a11y: {
+    choosePalette: "选择配色",
     skipToContent: "跳转到正文",
     skipTableOfContents: "跳过目录",
     openMenu: "展开菜单",

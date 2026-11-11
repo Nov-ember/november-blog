@@ -33,3 +33,66 @@
   --muted-foreground: #d8dee9;
   --border: #434c5e;
 }
+
+/* Catppuccin Latte (light) and Mocha (dark). */
+[data-palette="catppuccin"] {
+  --background: #eff1f5;
+  --foreground: #4c4f69;
+  --accent: #8839ef;
+  --accent-foreground: #eff1f5;
+  --muted: #e6e9ef;
+  --muted-foreground: #5c5f77;
+  --border: #ccd0da;
+}
+
+[data-palette="catppuccin"][data-theme="dark"] {
+  --background: #1e1e2e;
+  --foreground: #cdd6f4;
+  --accent: #cba6f7;
+  --accent-foreground: #1e1e2e;
+  --muted: #313244;
+  --muted-foreground: #bac2de;
+  --border: #45475a;
+}
+
+/* Gruvbox: medium contrast, faded orange in light and bright orange in dark. */
+[data-palette="gruvbox"] {
+  --background: #fbf1c7;
+  --foreground: #3c3836;
+  --accent: #af3a03;
+  --accent-foreground: #fbf1c7;
+  --muted: #ebdbb2;
+  --muted-foreground: #665c54;
+  --border: #d5c4a1;
+}
+
+[data-palette="gruvbox"][data-theme="dark"] {
+  --background: #282828;
+  --foreground: #ebdbb2;
+  --accent: #fe8019;
+  --accent-foreground: #282828;
+  --muted: #3c3836;
+  --muted-foreground: #bdae93;
+  --border: #504945;
+}
+
+/* Everforest medium. Darken light-mode green and secondary text for readability. */
+[data-palette="everforest"] {
+  --background: #fdf6e3;
+  --foreground: #5c6a72;
+  --accent: #667600;
+  --accent-foreground: #fdf6e3;
+  --muted: #f4f0d9;
+  --muted-foreground: #66756b;
+  --border: #e0dcc7;
+}
+
+[data-palette="everforest"][data-theme="dark"] {
+  --background: #2d353b;
+  --foreground: #d3c6aa;
+  --accent: #a7c080;
+  --accent-foreground: #2d353b;
+  --muted: #343f44;
+  --muted-foreground: #9da9a0;
+  --border: #475258;
+}

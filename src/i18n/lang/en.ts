@@ -51,6 +51,7 @@ export default {
     searchDesc: "Search any article ...",
   },
   a11y: {
+    choosePalette: "Choose palette",
     skipToContent: "Skip to content",
     skipTableOfContents: "Skip table of contents",
     openMenu: "Open menu",

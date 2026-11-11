@@ -73,13 +73,33 @@ const rssHref = getAssetPath("rss.xml");
     -->
     <script is:inline>
       (function () {
-        const stored = localStorage.getItem("theme");
+        let stored = null;
+        let palette = "nord";
+        try {
+          stored = localStorage.getItem("theme");
+          const storedPalette = localStorage.getItem("palette");
+          if (
+            storedPalette === "catppuccin" ||
+            storedPalette === "gruvbox" ||
+            storedPalette === "everforest"
+          ) {
+            palette = storedPalette;
+          }
+        } catch {
+          /* Storage may be disabled by the browser. */
+        }
         const prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)"
         ).matches;
-        const theme = stored ?? (prefersDark ? "dark" : "light");
+        const theme =
+          stored === "dark" || stored === "light"
+            ? stored
+            : prefersDark
+              ? "dark"
+              : "light";
         const root = document.firstElementChild;
         root?.setAttribute("data-theme", theme);
+        root?.setAttribute("data-palette", palette);
         root?.classList.toggle("dark", theme === "dark");
         // Expose value so theme.ts can skip re-detection.
         window.__theme = { value: theme };

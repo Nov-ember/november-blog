@@ -50,6 +50,7 @@ export interface UIStrings {
     searchDesc: string;
   };
   a11y: {
+    choosePalette: string;
     skipToContent: string;
     /** Optional until v8, so older locale files still type-check. */
     skipTableOfContents?: string;
