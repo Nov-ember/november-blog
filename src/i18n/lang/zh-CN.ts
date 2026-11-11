@@ -2,6 +2,7 @@ import type { UIStrings } from "../types";
 
 export default {
   nav: {
+    links: "友链",
     home: "首页",
     posts: "文章",
     tags: "标签",
@@ -35,6 +36,9 @@ export default {
     allRightsReserved: "All rights reserved.",
   },
   pages: {
+    linksTitle: "友链",
+    linksDesc: "All the friends met along the way.",
+
     tagTitle: "标签",
     tagDesc: "All the articles with the tag",
 

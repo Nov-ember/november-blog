@@ -1,0 +1,92 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import { friends } from "@/data/links";
+import { getAssetPath } from "@/utils/withBase";
+import { useTranslations } from "@/i18n";
+import config from "@/config";
+
+const t = useTranslations(Astro.currentLocale ?? config.site.lang);
+const avatarSrc = (path: string) =>
+  /^https?:\/\//.test(path) ? path : getAssetPath(path);
+---
+
+<Layout
+  title={`${t.pages.linksTitle} | ${config.site.title}`}
+  description={t.pages.linksDesc}
+>
+  <Header />
+  <Breadcrumb />
+  <Main pageTitle={t.pages.linksTitle} pageDesc={t.pages.linksDesc}>
+    {
+      friends.length > 0 ? (
+        <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {friends.map(friend => (
+            <li>
+              <a
+                href={friend.url}
+                class="group hover:bg-muted focus-visible:bg-muted flex h-full items-start gap-4 rounded-lg p-4 transition-colors motion-reduce:transition-none"
+              >
+                <span
+                  aria-hidden="true"
+                  class="bg-muted text-accent relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-full text-lg font-semibold"
+                >
+                  {Array.from(friend.name.trim())[0]?.toLocaleUpperCase()}
+                  {friend.avatar && (
+                    <img
+                      data-friend-avatar
+                      src={avatarSrc(friend.avatar)}
+                      alt=""
+                      width="48"
+                      height="48"
+                      loading="lazy"
+                      decoding="async"
+                      class="absolute inset-0 size-full object-cover"
+                    />
+                  )}
+                </span>
+                <span class="min-w-0 flex-1">
+                  <span class="group-hover:text-accent group-focus-visible:text-accent flex items-baseline gap-2 font-semibold transition-colors motion-reduce:transition-none">
+                    <span class="wrap-anywhere">{friend.name}</span>
+                    <span
+                      aria-hidden="true"
+                      class="text-muted-foreground shrink-0 text-sm"
+                    >
+                      ↗
+                    </span>
+                  </span>
+                  <span class="text-muted-foreground mt-1 block text-sm leading-relaxed wrap-anywhere">
+                    {friend.description}
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : null
+    }
+  </Main>
+  <Footer />
+</Layout>
+
+<script>
+  // Keep the initial visible when an avatar is missing or cannot be loaded.
+  function setupAvatars() {
+    document
+      .querySelectorAll<HTMLImageElement>("[data-friend-avatar]")
+      .forEach(img => {
+        if (img.complete && img.naturalWidth === 0) img.hidden = true;
+        img.addEventListener(
+          "error",
+          () => {
+            img.hidden = true;
+          },
+          { once: true }
+        );
+      });
+  }
+  document.addEventListener("astro:page-load", setupAvatars);
+</script>
